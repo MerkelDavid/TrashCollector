@@ -16,11 +16,8 @@ namespace TrashCollector.Models
         public string Password { get; set; }
         public int FrequencyID { get; set; }
         public Frequency Frequency { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public int ZipCode { get; set; }
-
+        public int AddressID { get; set; }
+        public Adress Adress { get; set; }
         public Payment Payment { get; set; }
         public int PaymentID { get; set; }
         public Charges Charges { get; set; }

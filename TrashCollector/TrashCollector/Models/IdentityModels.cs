@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace TrashCollector.Models
 {
+    
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
@@ -20,6 +21,15 @@ namespace TrashCollector.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Frequency> Frequencies { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+
+        public DbSet<Charges> Charges { get; set; }
+
+        public DbSet<Adress> Adresses { get; set; }
+
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -30,4 +40,6 @@ namespace TrashCollector.Models
             return new ApplicationDbContext();
         }
     }
+
+
 }
