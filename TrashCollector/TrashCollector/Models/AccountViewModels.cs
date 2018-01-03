@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
+using System.Data.Entity;
 namespace TrashCollector.Models
 {
     public class ExternalLoginConfirmationViewModel
@@ -62,8 +62,9 @@ namespace TrashCollector.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel
+    public class RegisterViewModel :DbContext
     {
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -86,10 +87,14 @@ namespace TrashCollector.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Display(Name = "Adress")]
-        public string Adress{ get; set; }
+        [Display(Name = "Address")]
+        public Adress Adress{ get; set; }
 
-        [Display(Name = "City")]
+        [Display(Name = "subscription type")]
+        public int frequencyId { get; set; }
+
+
+ /*       [Display(Name = "City")]
         public string City { get; set; }
 
         [Display(Name = "State")]
@@ -97,7 +102,7 @@ namespace TrashCollector.Models
 
         [Display(Name = "Zip Code")]
         [StringLength(5, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 5)]
-        public string ZipCode { get; set; }
+        public string ZipCode { get; set; }*/
 
     }
 

@@ -202,6 +202,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -211,11 +212,16 @@
     <Compile Include="Migrations\201801031701191_baseDB.Designer.cs">
       <DependentUpon>201801031701191_baseDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801031906357_AddedEmail.cs" />
+    <Compile Include="Migrations\201801031906357_AddedEmail.Designer.cs">
+      <DependentUpon>201801031906357_AddedEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Adress.cs" />
     <Compile Include="Models\Charges.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerDbContext.cs" />
     <Compile Include="Models\Frequency.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -286,6 +292,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Customer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -298,6 +305,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201801031701191_baseDB.resx">
       <DependentUpon>201801031701191_baseDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801031906357_AddedEmail.resx">
+      <DependentUpon>201801031906357_AddedEmail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
