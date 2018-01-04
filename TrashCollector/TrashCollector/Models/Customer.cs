@@ -13,6 +13,9 @@ namespace TrashCollector.Models
         public int CustomerId { get; set; }
 
         [Required(ErrorMessage = "First name is required")]
+        public string UserName { get; set; }
+
+        [Required(ErrorMessage = "First name is required")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Last name is required")]
@@ -24,6 +27,10 @@ namespace TrashCollector.Models
         [EmailAddress]
         [Required(ErrorMessage = "Email is required")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "UserRoles")]
+        public string UserRoles { get; set; }
 
         public int FrequencyID { get; set; }
         public Frequency Frequency { get; set; }

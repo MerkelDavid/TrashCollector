@@ -1,0 +1,50 @@
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="padding-bottom:7px">
+    <a class="navbar-brand">David's Trash Collection</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation" style="">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse show" id="navbarColor01" style="">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "Customer")">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("LogOff", "Account")">logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col-sm-3">
+        <a href='@Url.Action("EditAddress","Customer")'>
+            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                <div class="card-header">Edit Address</div>
+                <div class="card-body">
+                    <p class="card-text">Click here to Input an adress or edit an existing adress</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-sm-3">
+        <a href='@Url.Action("MakePayments","Customer")'>
+            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                <div class="card-header">Make payments</div>
+                <div class="card-body">
+                    <p class="card-text">Click here to make a payment on a previous pick up</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-sm-3">
+        <a href='@Url.Action("ChangeSchedule","Customer")'>
+            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                <div class="card-header">Change Schedule</div>
+                <div class="card-body">
+                    <p class="card-text">Click here to add or remove pick up dates</p>
+                </div>
+            </div>
+        </a>
+</div>
+</div>

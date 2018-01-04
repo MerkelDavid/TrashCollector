@@ -49,9 +49,12 @@ namespace TrashCollector.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "UserRole")]
+        public string UserRole { get; set; }
+
+        [Required]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -62,8 +65,15 @@ namespace TrashCollector.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel :DbContext
+    public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "UserRole")]
+        public string UserRole { get; set; }
+
+        [Required]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
 
         [Required]
         [EmailAddress]
@@ -79,9 +89,10 @@ namespace TrashCollector.Models
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+
         public string ConfirmPassword { get; set; }
 
-        [Display(Name = "First Name")]
+/*        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
@@ -94,7 +105,7 @@ namespace TrashCollector.Models
         public int frequencyId { get; set; }
 
 
- /*       [Display(Name = "City")]
+        [Display(Name = "City")]
         public string City { get; set; }
 
         [Display(Name = "State")]

@@ -205,6 +205,7 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -215,6 +216,14 @@
     <Compile Include="Migrations\201801031906357_AddedEmail.cs" />
     <Compile Include="Migrations\201801031906357_AddedEmail.Designer.cs">
       <DependentUpon>201801031906357_AddedEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801041532550_loginAndRegistration.cs" />
+    <Compile Include="Migrations\201801041532550_loginAndRegistration.Designer.cs">
+      <DependentUpon>201801041532550_loginAndRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801041535051_CustomerUserName.cs" />
+    <Compile Include="Migrations\201801041535051_CustomerUserName.Designer.cs">
+      <DependentUpon>201801041535051_CustomerUserName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -289,10 +298,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Customer\index.cshtml" />
+    <Content Include="Views\User\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Customer\" />
+    <Folder Include="Migrations\201801041532346_login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -308,6 +319,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801031906357_AddedEmail.resx">
       <DependentUpon>201801031906357_AddedEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801041532550_loginAndRegistration.resx">
+      <DependentUpon>201801041532550_loginAndRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801041535051_CustomerUserName.resx">
+      <DependentUpon>201801041535051_CustomerUserName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
