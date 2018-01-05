@@ -390,10 +390,9 @@ namespace TrashCollector.Controllers
             return View(model);
         }
 
-        //
-        // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        //possibly ask about 
+        //[httpPost]
+        //[validateantiforgerytoken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
