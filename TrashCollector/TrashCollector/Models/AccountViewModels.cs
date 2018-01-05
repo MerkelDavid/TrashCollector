@@ -48,9 +48,6 @@ namespace TrashCollector.Models
 
     public class LoginViewModel
     {
-        [Required]
-        [Display(Name = "UserRole")]
-        public string UserRole { get; set; }
 
         [Required]
         [Display(Name = "UserName")]
