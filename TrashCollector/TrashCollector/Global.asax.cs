@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Configuration;
+using Stripe;
 
 namespace TrashCollector
 {
@@ -12,6 +14,8 @@ namespace TrashCollector
     {
         protected void Application_Start()
         {
+            var secretKey = WebConfigurationManager.AppSettings["StripeSecretKey"];
+            StripeConfiguration.SetApiKey(secretKey);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

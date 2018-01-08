@@ -1,7 +1,53 @@
-﻿
+﻿@model TrashCollector.Models.ScheduleViewModel
 @{
     ViewBag.Title = "ChangeSchedule";
 }
 
 <h2>ChangeSchedule</h2>
+
+@using (Html.BeginForm("EditAddress", "Customer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <h4>Edit your Address information</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        <label>Pick up Schedule:</label>
+        <div class="col-md-10">
+            <select class="form-control" id="ScheduleType" name="ScheduleType">
+                <option value="Daily">Daily</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Monthly">Monthly</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Day of the week:</label>
+        <div class="col-md-10">
+            <select class="form-control" id="Day" name="Day">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Zip Code:</label>
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ZipCode, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-success" value="Submit" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 

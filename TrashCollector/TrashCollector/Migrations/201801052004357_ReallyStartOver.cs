@@ -3,7 +3,7 @@ namespace TrashCollector.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class baseDB : DbMigration
+    public partial class ReallyStartOver : DbMigration
     {
         public override void Up()
         {
@@ -12,6 +12,7 @@ namespace TrashCollector.Migrations
                 c => new
                     {
                         AdressID = c.Int(nullable: false, identity: true),
+                        CustomerID = c.String(),
                         Address = c.String(),
                         City = c.String(),
                         State = c.String(),
@@ -36,9 +37,12 @@ namespace TrashCollector.Migrations
                 c => new
                     {
                         CustomerId = c.Int(nullable: false, identity: true),
-                        FirstName = c.String(),
-                        LastName = c.String(),
-                        Password = c.String(),
+                        UserName = c.String(nullable: false),
+                        FirstName = c.String(nullable: false),
+                        LastName = c.String(nullable: false),
+                        Password = c.String(nullable: false),
+                        Email = c.String(nullable: false),
+                        UserRoles = c.String(nullable: false),
                         FrequencyID = c.Int(nullable: false),
                         AddressID = c.Int(nullable: false),
                         PaymentID = c.Int(nullable: false),

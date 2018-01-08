@@ -6,8 +6,13 @@ using System.Data.Entity;
 
 namespace TrashCollector.Models
 {
-    public class CustomerDbContext :DbContext
+   public class CustomerDbContext :DbContext
     {
         public DbSet<Customer> Customer { get; set; }
+    }
+
+    public class AddressDbContext :DbContext
+    {
+        public DbSet<Adress> Address { get; set; }
     }
 }

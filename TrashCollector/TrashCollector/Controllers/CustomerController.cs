@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,14 +21,26 @@ namespace TrashCollector.Controllers
 
         public ActionResult EditAddress()
         {
+            var CurrentUser = User.Identity.GetUserId();
+            using (ApplicationDbContext context = new ApplicationDbContext())
+            {
+                var user = context.Adresses.Find(CurrentUser);
+                ViewBag.name = user;
+            }
             return View();
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> EditAddress(AddressViewModel model)
+        public ActionResult EditAddress(Adress model)
         {
-            return View();
+            model.CustomerID = User.Identity.GetUserId();
+            using (ApplicationDbContext context = new ApplicationDbContext())
+            {
+                context.Adresses.Add(model);
+                context.SaveChanges();
+            }
+
+            return RedirectToAction("index", "Customer");
         }
 
         public ActionResult MakePayments()
