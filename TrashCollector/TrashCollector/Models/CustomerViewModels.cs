@@ -22,10 +22,4 @@ namespace TrashCollector.Models
         [Required]
         public int SecurityCode { get; set; }
     }
-
-
-    public class ScheduleViewModel
-    {
-
-    }
 }

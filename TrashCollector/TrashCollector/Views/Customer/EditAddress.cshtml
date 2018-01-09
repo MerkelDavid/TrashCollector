@@ -1,9 +1,12 @@
 ﻿@model TrashCollector.Models.Adress
 @{
-    ViewBag.Title = "Change Address";
+    if (!Request.IsAuthenticated)
+    {
+        Response.Redirect(Url.Action("Index", "Home"));
+    }
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Message</h2>
 
 @using (Html.BeginForm("EditAddress", "Customer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
@@ -13,13 +16,13 @@
     <div class="form-group">
         <label>Address:</label>
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @Value = ViewBag.Data.Address })
         </div>
     </div>
     <div class="form-group">
         <label>City: </label>
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.City, new { @class = "form-control", @Value = ViewBag.Data.City })
         </div>
     </div>
     <div class="form-group">
@@ -85,7 +88,7 @@
     <div class="form-group">
         <label>Zip Code:</label>
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.ZipCode, new { @class = "form-control" })
+            @Html.PasswordFor(m => m.ZipCode, new { @class = "form-control", @Value =ViewBag.Data.ZipCode  })
         </div>
     </div>
     <div class="form-group">
@@ -93,7 +96,6 @@
             <input type="submit" class="btn btn-success" value="Submit" />
         </div>
     </div>
-}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

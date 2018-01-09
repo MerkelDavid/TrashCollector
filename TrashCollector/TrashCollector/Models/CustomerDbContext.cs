@@ -15,4 +15,9 @@ namespace TrashCollector.Models
     {
         public DbSet<Adress> Address { get; set; }
     }
+
+    public class ScheduleDbContext : DbContext
+    {
+        public DbSet<Schedule> Schedule { get; set; }
+    }
 }

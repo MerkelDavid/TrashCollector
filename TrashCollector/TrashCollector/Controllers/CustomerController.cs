@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -24,8 +25,14 @@ namespace TrashCollector.Controllers
             var CurrentUser = User.Identity.GetUserId();
             using (ApplicationDbContext context = new ApplicationDbContext())
             {
-                var user = context.Adresses.Find(CurrentUser);
-                ViewBag.name = user;
+                foreach(var user in context.Adresses)
+                {
+                    if(user.CustomerID == CurrentUser)
+                    {
+                        ViewBag.Data = user;
+                    }
+                }
+
             }
             return View();
         }
@@ -33,24 +40,40 @@ namespace TrashCollector.Controllers
         [HttpPost]
         public ActionResult EditAddress(Adress model)
         {
-            model.CustomerID = User.Identity.GetUserId();
+            var CurrentUser = User.Identity.GetUserId();
+            model.CustomerID = CurrentUser;
+
             using (ApplicationDbContext context = new ApplicationDbContext())
             {
-                context.Adresses.Add(model);
-                context.SaveChanges();
-            }
+                bool UserExists = false;
+                foreach (var user in context.Adresses)
+                {
+                    if (user.CustomerID == CurrentUser)
+                    {
+                        user.Address = model.Address;
+                        user.City = model.City;
+                        user.State = model.State;
+                        user.ZipCode = user.ZipCode;
+                        UserExists = true;
+                    }
+                }
 
+                if (UserExists == false)
+                {
+                    context.Adresses.Add(model);
+                    context.SaveChanges();
+                }
+            }
+            ViewBag.Message = "Your address has been updated";
             return RedirectToAction("index", "Customer");
         }
 
         public ActionResult MakePayments()
         {
             return View();
-
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> MakePayments(PaymentViewModel model)
         {
             return View();
@@ -58,14 +81,49 @@ namespace TrashCollector.Controllers
 
         public ActionResult ChangeSchedule()
         {
-            return View();
+            var CurrentUser = User.Identity.GetUserId();
+            using (ApplicationDbContext context = new ApplicationDbContext())
+            {
+                foreach (var user in context.Schedule)
+                {
+                    if (user.Customer == CurrentUser)
+                    {
+                        ViewBag.Data = user;
+                    }
+                }
+                return View();
+            }
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ChangeSchedule(ScheduleViewModel model)
-        {
-            return View();
+        public ActionResult ChangeSchedule(Schedule model)
+        { 
+            var CurrentUser = User.Identity.GetUserId();
+            model.Customer = CurrentUser;
+
+            using (ApplicationDbContext context = new ApplicationDbContext())
+            {
+                bool UserExists = false;
+                foreach(var user in context.Schedule)
+                {
+                    if(user.Customer == CurrentUser)
+                    {
+                        user.Day = model.Day;
+                        user.Frequency = model.Frequency;
+                        user.VacationMode = model.VacationMode;
+                        UserExists = true;
+                    }
+                }
+                
+                if (UserExists == false)
+                {
+                    context.Schedule.Add(model);
+                    context.SaveChanges();
+                }
+            }
+            ViewBag.Message = "Your Schedule has been updated";
+            return RedirectToAction("index", "Customer");
+
         }
     }
 }

@@ -1,11 +1,16 @@
-﻿@model TrashCollector.Models.ScheduleViewModel
+﻿@model TrashCollector.Models.Schedule
 @{
+    if (!Request.IsAuthenticated)
+    {
+        Response.Redirect(Url.Action("Index", "Home"));
+    }
     ViewBag.Title = "ChangeSchedule";
+
 }
 
 <h2>ChangeSchedule</h2>
 
-@using (Html.BeginForm("EditAddress", "Customer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("ChangeSchedule", "Customer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     <h4>Edit your Address information</h4>
     <hr />
@@ -13,7 +18,7 @@
     <div class="form-group">
         <label>Pick up Schedule:</label>
         <div class="col-md-10">
-            <select class="form-control" id="ScheduleType" name="ScheduleType">
+            <select class="form-control" id="Frequency" name="Frequency">
                 <option value="Daily">Daily</option>
                 <option value="Weekly">Weekly</option>
                 <option value="Monthly">Monthly</option>
@@ -35,10 +40,8 @@
         </div>
     </div>
     <div class="form-group">
-        <label>Zip Code:</label>
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ZipCode, new { @class = "form-control" })
-        </div>
+
+        <label><input type="radio" name="VactionMode" id="Vacation" value="@(ViewBag.Data.VacationMode)" >Vacation mode(No grabage will be collected while this is active)</label>
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">

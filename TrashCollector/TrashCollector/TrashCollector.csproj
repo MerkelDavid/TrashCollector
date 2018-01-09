@@ -201,6 +201,20 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Migrations\201801091408567_AddedScheduleTable.cs" />
+    <Compile Include="Migrations\201801091408567_AddedScheduleTable.Designer.cs">
+      <DependentUpon>201801091408567_AddedScheduleTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801091413455_AddedSchedule.cs" />
+    <Compile Include="Migrations\201801091413455_AddedSchedule.Designer.cs">
+      <DependentUpon>201801091413455_AddedSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801091419173_schedule.cs" />
+    <Compile Include="Migrations\201801091419173_schedule.Designer.cs">
+      <DependentUpon>201801091419173_schedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Schedule.cs" />
     <Compile Include="Views\Charge.aspx.cs">
       <DependentUpon>Charge.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -315,6 +329,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Role\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -330,6 +345,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801052025183_ImJustGuessingThisMightWork.resx">
       <DependentUpon>201801052025183_ImJustGuessingThisMightWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801091408567_AddedScheduleTable.resx">
+      <DependentUpon>201801091408567_AddedScheduleTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801091413455_AddedSchedule.resx">
+      <DependentUpon>201801091413455_AddedSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801091419173_schedule.resx">
+      <DependentUpon>201801091419173_schedule.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

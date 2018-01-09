@@ -29,7 +29,7 @@ namespace TrashCollector.Models
 
         public DbSet<Adress> Adresses { get; set; }
 
-
+        public DbSet<Schedule> Schedule { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
