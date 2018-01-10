@@ -61,8 +61,9 @@ namespace TrashCollector.Controllers
                 if (UserExists == false)
                 {
                     context.Adresses.Add(model);
-                    context.SaveChanges();
                 }
+
+                context.SaveChanges();
             }
             ViewBag.Message = "Your address has been updated";
             return RedirectToAction("index", "Customer");
@@ -98,7 +99,7 @@ namespace TrashCollector.Controllers
         [HttpPost]
         public ActionResult ChangeSchedule(Schedule model)
         { 
-            var CurrentUser = User.Identity.GetUserId();
+            string CurrentUser = User.Identity.GetUserId();
             model.Customer = CurrentUser;
 
             using (ApplicationDbContext context = new ApplicationDbContext())
@@ -106,10 +107,9 @@ namespace TrashCollector.Controllers
                 bool UserExists = false;
                 foreach(var user in context.Schedule)
                 {
-                    if(user.Customer == CurrentUser)
+                    if(String.Equals(user.Customer,CurrentUser))
                     {
                         user.Day = model.Day;
-                        user.Frequency = model.Frequency;
                         user.VacationMode = model.VacationMode;
                         UserExists = true;
                     }
@@ -118,8 +118,9 @@ namespace TrashCollector.Controllers
                 if (UserExists == false)
                 {
                     context.Schedule.Add(model);
-                    context.SaveChanges();
                 }
+
+                context.SaveChanges();
             }
             ViewBag.Message = "Your Schedule has been updated";
             return RedirectToAction("index", "Customer");

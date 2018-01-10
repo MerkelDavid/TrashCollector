@@ -12,19 +12,9 @@
 
 @using (Html.BeginForm("ChangeSchedule", "Customer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-    <h4>Edit your Address information</h4>
+    <h4>Edit your Schedule</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        <label>Pick up Schedule:</label>
-        <div class="col-md-10">
-            <select class="form-control" id="Frequency" name="Frequency">
-                <option value="Daily">Daily</option>
-                <option value="Weekly">Weekly</option>
-                <option value="Monthly">Monthly</option>
-            </select>
-        </div>
-    </div>
     <div class="form-group">
         <label>Day of the week:</label>
         <div class="col-md-10">
@@ -41,7 +31,7 @@
     </div>
     <div class="form-group">
 
-        <label><input type="radio" name="VactionMode" id="Vacation" value="@(ViewBag.Data.VacationMode)" >Vacation mode(No grabage will be collected while this is active)</label>
+        <label><input type="radio" name="VactionMode" id="Vacation" >Vacation mode(No grabage will be collected while this is active)</label>
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">

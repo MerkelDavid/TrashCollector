@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<TrashCollector.Models.Adress>
+@{
     if (!Request.IsAuthenticated)
     {
         Response.Redirect(Url.Action("Index", "Home"));
@@ -22,29 +23,22 @@
         </ul>
     </div>
 </nav>
-<div class="row">
-    <center>@ViewBag.Name</center>
-</div>
-<div class="row">
-    <div class="col-sm-4">
-        <a href='@Url.Action("Customers","Employee")'>
-            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
-                <div class="card-header">View Today's Customers</div>
-                <div class="card-body">
-                    <p class="card-text">See a list of customers on your route today.</p>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col-sm-4">
-        <a href='@Url.Action("Route","Employee")'>
-            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
-                <div class="card-header">View Route</div>
-                <div class="card-body">
-                    <p class="card-text">View today's Route</p>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
 
+<div class="row">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Address</th>
+                <th scope="col">City</th>
+                <th scope="col">State</th>
+                <th scope="col">ZipCode</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Address</td><td>@item.City</td><td>@item.State</td><td>@item.ZipCode</td>
+            </tr>
+        }
+    </table>
+</div>
